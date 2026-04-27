@@ -2,7 +2,6 @@ import socket
 
 target = input("Enter IP or domain: ")
 
-# works for both IP and domain
 try:
     target_ip = socket.gethostbyname(target)
 except socket.gaierror:
@@ -12,6 +11,10 @@ except socket.gaierror:
 start = int(input("Enter the start port: "))
 end = int(input("Enter the end port: "))
 
+if start>end:
+    print("invalid range.")
+    exit()
+
 print(f"Scanning {target_ip}...")
 
 for port in range(start, end + 1):
@@ -19,7 +22,13 @@ for port in range(start, end + 1):
     s.settimeout(1)
 
     res = s.connect_ex((target_ip, port))
+
     if res == 0:
-        print(f"Port {port} is open")
+        try:
+            service = socket.getservbyport(port)
+        except:
+            service = "unknown"
+
+        print(f"Port {port} ({service}) is open")
 
     s.close()

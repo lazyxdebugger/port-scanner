@@ -2,6 +2,13 @@
 A simple Python-based port scanner that scans a target IP address or domain to identify open ports using socket programming.
 
 ---
+
+**`Features`**
+- Scans custom port ranges
+- Supports IP and domain names
+- Detects common services running on open ports
+
+---
 **`what it does?`**
 - It scans a targeted IP/domain name to identify the open ports on that IP/domain.
 ---
@@ -28,6 +35,30 @@ Enter the end port: 8005
 Scanning 127.0.0.1...
 
 Port 8000 is open
+
+---
+
+**`version`**
+```md
+Current Version: v4
+```
+---
+
+**`output after new updates`**
+
+(zoro㉿kali)-[~/Desktop/portscan]
+
+└─$ python scan.py
+
+Enter IP or domain: localhost
+
+Enter the start port: 1  
+
+Enter the end port: 100
+
+Scanning 127.0.0.1...
+
+Port 80 (http) is open
 
 ---
 
